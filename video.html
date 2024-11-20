@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>Видео проверка - просмотр покадрово</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+	<meta name="KEYWORDS" content=""/>
+	<meta name="DESCRIPTION" content=""/>
+
+<style type="text/css">
+
+* { -moz-box-sizing: border-box; /* Для Firefox */
+	-webkit-box-sizing: border-box; /* Для Safari и Chrome */
+	box-sizing: border-box; }
+
+body { margin: 0px; padding: 0px; font: 11px/14px Tahoma; }
+p { font-family: arial,verdana; padding: 0px; font-size: 16px; }
+
+		/*canvas {max-width: 30%}*/
+button { padding: 0; font-size: 16px; width: 80px; margin-right: 5px; vertical-align: middle; position: relative; cursor: pointer; }
+button > div {display: table; text-align: center; width: 100%;}
+button > div > div { vertical-align: middle; display: table-cell; height: 40px; text-align: center; width: 100%; }
+
+#time_video{ display: inline-block;	width: 200px; border-radius: 5px; border: solid 2px; min-height: 35px;	vertical-align: middle;	padding: 3px;
+			 box-shadow: 0 0 5px 7px #00C22B; }
+#time_video span {min-width: 3px; display: inline-block; width: 47%; font-size: 16px; padding: 5px; text-align: center;	}
+
+#triangle_left { position: absolute; width: 0; height: 0; border-right: 40px solid rgba(107, 191, 32, 0.65); border-bottom: 20px solid transparent;border-top: 20px solid transparent; top: 0; left: 0;}
+
+#triangle_right {  position: absolute; width: 0; height: 0; border-top: 20px solid transparent; border-left: 40px solid rgba(255, 90, 0, 0.51);;
+    border-bottom: 20px solid transparent; top: 0; right: 1px;}
+
+button:active #triangle_right {top: 1px; right: -1px; }
+button:active #triangle_left {top: 1px; left: 1px; }
+
+#triangle_left1 { position: absolute; width: 0px; height: 0px; border-right: 15px solid rgba(110, 120, 101, 0.65); border-bottom: 25px solid transparent; border-top: 25px solid transparent; top: 0px; left: -18px; }
+
+
+#normal_speed { font-weight: bold; padding: 15px; margin: 5px; background-color: rgb(0, 246, 255); border-radius: 20px; border: 2px solid green; font-size: 0; vertical-align: text-top; position: relative; cursor: pointer}
+
+#normal_speed > span { position: absolute; height: 100%; vertical-align: middle; display: table; top: 0; left: 0; text-align: center; width: 100%;}
+#normal_speed > span > span { font-size: 16px; vertical-align: middle; display: table-cell;}
+
+#normal_speed:hover { background-color: #80FBFF; border: 2px solid #348134; }
+#normal_speed:active { color: #5C5C5C; background-color: #8FD4D7; }
+#normal_speed:active > span > span { font-size: 14px; }
+
+#URL_video { box-shadow: 0 0 5px 7px #A2A2A2; font-size: 16px; border: solid 2px #4F58BF; border-radius: 5px; max-width: 50%; margin: 20px 7px; height: 30px;
+			 display: inline-block; min-width: 400px; padding-left: 4px; vertical-align: middle; }
+
+#marker_video { position: absolute; top: 0; left: 0; right: 0; background-color: #FEC2C0; text-align: center; vertical-align: middle; font-size: 14px; line-height: 150%; padding: 10px; font-weight: bold; display: none; }
+
+#marker_video > span { background-color: #DDB872; padding: 3px 7px; }
+
+#input-tag { position: relative; }
+#input-tag > input { border: 1px solid; padding: 10px; width: 100%; display: block; position: relative }
+div#input-tag::before { content: ""; position: absolute;  width: 0;
+	height: 0;
+	border-top: 30px solid rgba(32, 163, 191, 0.44);
+	border-left: 95px solid transparent;
+	border-right: 95px solid transparent;
+	top: -30px;
+	left: 0;
+	z-index: 1}
+
+</style>
+</head>
+
+
+<div style="background-color: transparent; display: inline-block; margin: 5px; vertical-align: top; width: 40%" class=" ">
+	<p style="margin: 5px 0 7px 0;">Исходное видео:</p>
+		<div class="" style="display: inline-block; max-width: 100%; margin-bottom: 20px; position: relative">
+			<video  class="" poster="" controls="controls" style="max-width: 100%" onerror="mediaError(event)">
+				<source type="video/mp4" alt="" src="">
+				К сожалению, тег video не поддерживается вашим браузером. Для просмотра видео нужен другой браузер
+			</video>
+			<div id="marker_video" ></div>
+		</div>
+	<div style="display: inline-block">
+		<div>
+			<span>Прокручивать на </span>
+			<input id="range" type="range"  max="100" min="1" /><label id="metka"></label><span> секунд</span>
+		</div>
+		<div style="margin-top: 10px; display: inline-block;"><div style="display: inline-block">Скорость просмотра <br/>видео </div>
+			<input id="speed" type="range"  max="400" min="10" value="100" /><label id="metka_speed"></label> <span id="normal_speed" onclick="DO_normal_speed()" title="Установить стандартную скорость просмотра видео, равную 1.0"><span><span>1.0</span></span></span>
+		</div>
+	</div>
+	<div style="border: solid 2px; border-radius: 5px; width: auto; max-width: 140px; font-size: 12px; vertical-align: top; display: inline-block; margin-left: 10px;">
+		<div style="display: inline-block; margin-bottom: 3px; padding: 2px">Время ожидания загрузки видео (сек.):</div>
+		<div style="display: inline-block">
+			<input id="time_load" style="font-size: 14px; border-radius: 5px; max-width: 50px; " value="3" />
+		</div>
+	</div>
+</div>
+
+
+<div style="display: inline-block; margin: 5px 5px 5px 0">
+	<p style="margin: 5px 0 7px 0;">Кадр из видео на canvas:</p>
+		<div style="margin-bottom: 15px">
+			<canvas id="c1"  style="display: block;"></canvas>
+		</div>
+
+	<button id="back" title="Назад на " onclick="f(-1)"><div><div id="triangle_left"></div><div>Назад</div></div></button>
+	<button id="forward" title="Вперед на " onclick="f(1)"><div><div>Вперед</div><div id="triangle_right"></div></div></button>
+	<div id="time_video" style="display: inline-block; "><span>0.00</span><span style="width: 3%; "> / </span><span style="font-weight: bold;"></span></div>
+	<div style="display: inline-block; font-size: 12px; vertical-align: top; margin-left: 5px;">Можно также использовать стрелки <br/>на клавиатуре &#8592; &#8594; </div>
+</div>
+<br/>
+<input id="URL_video" placeholder="Укажите URL видео..." />
+<button onclick="load_video()" style="width: auto; font-size: 16px; vertical-align: middle; margin: 10px; position: relative">
+	<div style="display: table"><div style="display: table-cell"><div id="triangle_left1"></div><div style="margin: 5px">Загрузить видео<br/>по URL</div></div></div>
+</button>
+
+<div style="border: solid 2px #4F58BF; box-shadow: 0px 0px 5px 7px #A2A2A2; display: inline-block; vertical-align: middle; font-size: 12px; border-radius: 5px; padding: 3px; max-width: 200px; ">
+	<div style="margin: 0 0 5px 0" >Загрузить видеофайл с жесткого <br/>диска компьютера. Или просто перетащите видеофайл сюда:</div>
+	<div id="input-tag">
+		<input type="file" accept="video/*"  onchange="readVideo(this)"/>
+	</div>
+</div>
+
+
+<iframe id="iFrame"  name="fr" onload="frt(this)" width="260" height="115" src="https://www.example.com/"  ></iframe>
+
+
+<script type="text/javascript">
+/*  Комментарии - для совместимости с XHTML   */
+/* <!-- [CDATA [*/
+var width, height;
+
+	var $ = document.getElementById.bind(document);
+
+	var vid = document.getElementsByTagName('video')[0];
+    var c1 = document.getElementById('c1');
+
+	width_height_canvas(); // задаем начальные width и height для canvas
+
+
+function width_height_canvas() {
+    width = parseInt(document.defaultView.getComputedStyle(vid).width) ;
+    height = parseInt(document.defaultView.getComputedStyle(vid).height);
+
+    c1.getContext("2d").drawImage(vid, 0, 0, width , height);
+
+    c1.width = width;
+    c1.height = height;
+}
+
+function frt(x) {
+
+    alert( x.window)
+
+	for(var i = 0; i < arguments.length; i++){
+
+        var arg = arguments[i];
+        console.log(i+': '+ arg)
+
+		for (var j = 0; j < arg.length; j++){
+
+            console.log('  '+ j+ ': '+ arg[j]);
+
+		}
+	}
+
+
+
+
+
+var linkedFrame = document.getElementById('iFrame');
+ 	    alert(linkedFrame.contentWindow.document.body.innerHTML);
+}
+
+
+
+function readVideo(input) {
+    var URL = this.window.URL || this.window.webkitURL;
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.readAsDataURL(input.files[0]);
+
+        reader.onload = function(e) {
+//		var blob = new Blob([input.files[0]], {"type" : "video\/mp4"});
+//          const urlBlob  = URL.createObjectURL(blob);
+            const urlBlob  = URL.createObjectURL(input.files[0]);
+            vid.src = urlBlob;
+            vid.poster = urlBlob;
+            vid.getElementsByTagName('source')[0].src = urlBlob;
+//            URL.revokeObjectURL(obj_url); // Освобождает память от Blob
+        };
+
+        reader.onerror = function() {
+            console.log(reader.error);
+        }
+
+    }else {
+        alert('Error: не получилось загрузить видеофайл');
+	}
+}
+
+
+
+
+
+
+function  f(direction) {
+    if(!flag){
+        return;
+	}
+//	console.log(vid.mozParsedFrames +' '+ vid.mozDecodedFrames+' '+ vid.mozPresentedFrames+' '+ vid.mozPaintedFrames+ ' ' )
+    vid.seekable.start(0);  // Returns the starting diapazon time (in seconds)
+    vid.seekable.end(Infinity);    // Returns the diapazon ending time (in seconds)
+    vid.currentTime += direction * parseFloat($('metka').textContent);
+
+    $('time_video').getElementsByTagName('span')[0].textContent = vid.currentTime.toFixed(2) ;
+    flag = 0;
+}
+
+
+
+function RefreshPrmt(val) {
+
+	val = !!(this.value) ? this.value : val; // В зависимости от того, передан ли явно аргумент при запуске этой функции
+
+  	$("metka").textContent = (parseFloat(val) / 100).toFixed(2);
+  	DO_titles('back', 'Назад на ', (parseFloat(val) / 100).toFixed(2));
+    DO_titles('forward', 'Вперед на ', (parseFloat(val) / 100).toFixed(2));
+  }
+function DO_titles(idd, title1, val) {
+    document.getElementById(idd).title = title1 + val + ' секунд(ы)';
+}
+
+function RefreshSpeed(val) {
+    val = !!(this.value) ? this.value : val; // В зависимости от того, передан ли явно аргумент при запуске этой функции
+
+    if(vid.paused){
+        vid.defaultPlaybackRate = (parseFloat(val) / 100).toFixed(1);
+	}else {
+        vid.playbackRate = (parseFloat(val) / 100).toFixed(1);
+    }
+
+    $("metka_speed").textContent = (parseFloat(val) / 100).toFixed(1);
+}
+
+function DO_normal_speed() { // Устанавливаем скорость воспроизведения видео, равную 1.0 (стандартную)
+    $("speed").value = 100;
+    new RefreshSpeed(100);
+}
+
+function load_video() { // Загружает видео в видео-тег и проверяет загрузку через 2 сек.
+
+	vid.poster = $('URL_video').value;
+	vid.getElementsByTagName('source')[0].src = $('URL_video').value;
+	vid.src = $('URL_video').value;
+
+    $('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки при загрузке видео
+	vid.load();
+
+    var time_load = $('time_load').value;
+
+	setTimeout(function () {
+	    var mess = "Прошло <span></span> сек., но видео пока не успело загрузиться. Увеличьте время ожидания загрузки и попробуйте загрузить видео снова.";
+
+        if(vid.networkState === 3){
+			alert('Видео по указанной ссылке не найдено или недоступна сеть.');
+			mess = 'Прошло <span></span> сек., но видео пока не найдено, так как его, похоже, нет по указанному URL. <br/> Проверьте правильность загружаемой ссылки. Или - увеличьте время ожидания загрузки и попробуйте загрузить видео снова.';
+		}
+
+	    if(vid.readyState >= 2){ // Если видео хотя бы начало загружаться
+			$('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки при загрузке видео
+
+            width_height_canvas(); // задаем width и height для canvas
+
+            c1.getContext("2d").drawImage(vid, 0, 0, width , height);
+
+		}else { // Если через заданное время видео так и не начало загружаться
+            $('marker_video').innerHTML = mess;
+            $('marker_video').getElementsByTagName('span')[0].textContent = time_load;
+            $('marker_video').style.display = 'block';
+		}
+    }, time_load * 1000);
+ }
+
+function mediaError(e) {
+
+    var target = e.target || e.srcElement;
+
+    if(target.error){
+	   switch (target.error.code) {
+
+		 case target.error.MEDIA_ERR_ABORTED:
+		   alert('Воспроизведение видео прервано пользователем.');
+		   break;
+
+		 case target.error.MEDIA_ERR_NETWORK:
+		   alert('Ошибка сети, загрузка медиафайла остановлена.');
+		   break;
+
+		 case target.error.MEDIA_ERR_DECODE:
+		   alert('Воспроизведение медиафайла прервано по причине наличия в нем элементов, которые не могут быть декодированы браузером.');
+		   break;
+
+		 case target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+		   alert('Медиа файл не может быть загружен по причине ошибки сервера или сети, или данный формат медиа не поддерживается.');
+		   break;
+
+		 default:
+		   alert('Не известная ошибка при работе с видео.');
+		   break;
+	   }
+    }
+ }
+
+
+
+$("range").onmousemove = RefreshPrmt;
+
+$("speed").onmousemove = RefreshSpeed;
+
+// При открытии/обновлении страницы задаем параметры
+$('metka').textContent = $('range').value / 100;
+
+new RefreshPrmt($("range").value);
+
+new RefreshSpeed($('speed').value);
+
+document.body.addEventListener("keydown",  show_kadr, false);
+
+function show_kadr(e) {
+    if(e.key === 'Right' || e.key === 'ArrowRight'){
+        e.preventDefault();
+        f(1*flag);
+//        flag = 0; // Для того, чтобы обработчик keydown работал вхолостую до тех пор, пока видео не будет готово к очередной прокрутке (после появления события canplay)
+    }
+    if(e.key === 'Left' || e.key === 'ArrowLeft'){
+        e.preventDefault();
+        f(-1*flag);
+//        flag = 0;
+    }
+}
+
+
+vid.addEventListener('loadeddata', function(e) { // Срабатывает только 1 раз (при загрузке видео)
+	if(vid.readyState >= 2){
+        console.log('Начата загрузка видео...');
+        width_height_canvas(); // задаем width и height для canvas
+    }else {
+        console.log('Невозможно загрузить видео по ссылке '+ $('URL_video').value);
+        alert('Ошибка при загрузке видео');
+    }
+});
+
+
+vid.addEventListener("canplay", function() { // Срабатывает каждый раз после очередной ручной прокрутки видео
+// Разрешаем прокручивать видео к следующему моменту времени только после того, как очередной кадр может показываться (и, соответственно, отображаться в canvas)
+//	console.log(1); // Просто хотя бы так, при этом почему-то меньше мигает и исчезает видео при его ручной прокрутке
+// Если этот обработчик делает хоть что-нибудь (даже бесполезную операцию), то видео при ручной прокрутке, как правило, не исчезает, не мигает.
+        $('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки, т.к. видео загрузилось
+
+	flag = 1; /* Для синхронизации прокрутки видео в теге video и в canvas (иначе изображение в canvas может не успеть появиться */
+        $('time_video').getElementsByTagName('span')[0].textContent = vid.currentTime.toFixed(2);
+        $('time_video').getElementsByTagName('span')[2].textContent = vid.duration.toFixed(2);
+},
+	false);
+
+
+vid.addEventListener("seeked", function() { // Срабатывает после canplay
+    c1.getContext("2d").drawImage(vid, 0, 0, width , height);
+    },
+	false);
+
+
+
+// Запрещаем перетаскивание файлов на страницу, за исключением специальной области для загрузки файлов
+window.addEventListener("dragover", prevent_drag_drop, false);
+window.addEventListener("drop", prevent_drag_drop, false);
+
+function prevent_drag_drop(e) {
+    e = e || event;
+    var target = e.target || e.srcElement;
+
+    if(target.parentNode.id !== 'input-tag'){
+        e.preventDefault();
+        e.stopPropagation();
+    }
+}
+
+
+
+
+var flag = 1;
+    c1.getContext("2d").drawImage(vid, 0, 0, width , height);
+
+/*]] --> */
+</script>
+
+
+</body>
+</html>
