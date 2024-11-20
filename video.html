@@ -2,7 +2,7 @@
 <html  xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-	<title>Видео проверка - просмотр покадрово</title>
+	<title>Р’РёРґРµРѕ РїСЂРѕРІРµСЂРєР° - РїСЂРѕСЃРјРѕС‚СЂ РїРѕРєР°РґСЂРѕРІРѕ</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -12,8 +12,8 @@
 
 <style type="text/css">
 
-* { -moz-box-sizing: border-box; /* Для Firefox */
-	-webkit-box-sizing: border-box; /* Для Safari и Chrome */
+* { -moz-box-sizing: border-box; /* Р”Р»СЏ Firefox */
+	-webkit-box-sizing: border-box; /* Р”Р»СЏ Safari Рё Chrome */
 	box-sizing: border-box; }
 
 body { margin: 0px; padding: 0px; font: 11px/14px Tahoma; }
@@ -71,25 +71,25 @@ div#input-tag::before { content: ""; position: absolute;  width: 0;
 
 
 <div style="background-color: transparent; display: inline-block; margin: 5px; vertical-align: top; width: 40%" class=" ">
-	<p style="margin: 5px 0 7px 0;">Исходное видео:</p>
+	<p style="margin: 5px 0 7px 0;">РСЃС…РѕРґРЅРѕРµ РІРёРґРµРѕ:</p>
 		<div class="" style="display: inline-block; max-width: 100%; margin-bottom: 20px; position: relative">
 			<video  class="" poster="" controls="controls" style="max-width: 100%" onerror="mediaError(event)">
 				<source type="video/mp4" alt="" src="">
-				К сожалению, тег video не поддерживается вашим браузером. Для просмотра видео нужен другой браузер
+				Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, С‚РµРі video РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ РІР°С€РёРј Р±СЂР°СѓР·РµСЂРѕРј. Р”Р»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РІРёРґРµРѕ РЅСѓР¶РµРЅ РґСЂСѓРіРѕР№ Р±СЂР°СѓР·РµСЂ
 			</video>
 			<div id="marker_video" ></div>
 		</div>
 	<div style="display: inline-block">
 		<div>
-			<span>Прокручивать на </span>
-			<input id="range" type="range"  max="100" min="1" /><label id="metka"></label><span> секунд</span>
+			<span>РџСЂРѕРєСЂСѓС‡РёРІР°С‚СЊ РЅР° </span>
+			<input id="range" type="range"  max="100" min="1" /><label id="metka"></label><span> СЃРµРєСѓРЅРґ</span>
 		</div>
-		<div style="margin-top: 10px; display: inline-block;"><div style="display: inline-block">Скорость просмотра <br/>видео </div>
-			<input id="speed" type="range"  max="400" min="10" value="100" /><label id="metka_speed"></label> <span id="normal_speed" onclick="DO_normal_speed()" title="Установить стандартную скорость просмотра видео, равную 1.0"><span><span>1.0</span></span></span>
+		<div style="margin-top: 10px; display: inline-block;"><div style="display: inline-block">РЎРєРѕСЂРѕСЃС‚СЊ РїСЂРѕСЃРјРѕС‚СЂР° <br/>РІРёРґРµРѕ </div>
+			<input id="speed" type="range"  max="400" min="10" value="100" /><label id="metka_speed"></label> <span id="normal_speed" onclick="DO_normal_speed()" title="РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ РїСЂРѕСЃРјРѕС‚СЂР° РІРёРґРµРѕ, СЂР°РІРЅСѓСЋ 1.0"><span><span>1.0</span></span></span>
 		</div>
 	</div>
 	<div style="border: solid 2px; border-radius: 5px; width: auto; max-width: 140px; font-size: 12px; vertical-align: top; display: inline-block; margin-left: 10px;">
-		<div style="display: inline-block; margin-bottom: 3px; padding: 2px">Время ожидания загрузки видео (сек.):</div>
+		<div style="display: inline-block; margin-bottom: 3px; padding: 2px">Р’СЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ Р·Р°РіСЂСѓР·РєРё РІРёРґРµРѕ (СЃРµРє.):</div>
 		<div style="display: inline-block">
 			<input id="time_load" style="font-size: 14px; border-radius: 5px; max-width: 50px; " value="3" />
 		</div>
@@ -98,24 +98,24 @@ div#input-tag::before { content: ""; position: absolute;  width: 0;
 
 
 <div style="display: inline-block; margin: 5px 5px 5px 0">
-	<p style="margin: 5px 0 7px 0;">Кадр из видео на canvas:</p>
+	<p style="margin: 5px 0 7px 0;">РљР°РґСЂ РёР· РІРёРґРµРѕ РЅР° canvas:</p>
 		<div style="margin-bottom: 15px">
 			<canvas id="c1"  style="display: block;"></canvas>
 		</div>
 
-	<button id="back" title="Назад на " onclick="f(-1)"><div><div id="triangle_left"></div><div>Назад</div></div></button>
-	<button id="forward" title="Вперед на " onclick="f(1)"><div><div>Вперед</div><div id="triangle_right"></div></div></button>
+	<button id="back" title="РќР°Р·Р°Рґ РЅР° " onclick="f(-1)"><div><div id="triangle_left"></div><div>РќР°Р·Р°Рґ</div></div></button>
+	<button id="forward" title="Р’РїРµСЂРµРґ РЅР° " onclick="f(1)"><div><div>Р’РїРµСЂРµРґ</div><div id="triangle_right"></div></div></button>
 	<div id="time_video" style="display: inline-block; "><span>0.00</span><span style="width: 3%; "> / </span><span style="font-weight: bold;"></span></div>
-	<div style="display: inline-block; font-size: 12px; vertical-align: top; margin-left: 5px;">Можно также использовать стрелки <br/>на клавиатуре &#8592; &#8594; </div>
+	<div style="display: inline-block; font-size: 12px; vertical-align: top; margin-left: 5px;">РњРѕР¶РЅРѕ С‚Р°РєР¶Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃС‚СЂРµР»РєРё <br/>РЅР° РєР»Р°РІРёР°С‚СѓСЂРµ &#8592; &#8594; </div>
 </div>
 <br/>
-<input id="URL_video" placeholder="Укажите URL видео..." />
+<input id="URL_video" placeholder="РЈРєР°Р¶РёС‚Рµ URL РІРёРґРµРѕ..." />
 <button onclick="load_video()" style="width: auto; font-size: 16px; vertical-align: middle; margin: 10px; position: relative">
-	<div style="display: table"><div style="display: table-cell"><div id="triangle_left1"></div><div style="margin: 5px">Загрузить видео<br/>по URL</div></div></div>
+	<div style="display: table"><div style="display: table-cell"><div id="triangle_left1"></div><div style="margin: 5px">Р—Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕ<br/>РїРѕ URL</div></div></div>
 </button>
 
 <div style="border: solid 2px #4F58BF; box-shadow: 0px 0px 5px 7px #A2A2A2; display: inline-block; vertical-align: middle; font-size: 12px; border-radius: 5px; padding: 3px; max-width: 200px; ">
-	<div style="margin: 0 0 5px 0" >Загрузить видеофайл с жесткого <br/>диска компьютера. Или просто перетащите видеофайл сюда:</div>
+	<div style="margin: 0 0 5px 0" >Р—Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕС„Р°Р№Р» СЃ Р¶РµСЃС‚РєРѕРіРѕ <br/>РґРёСЃРєР° РєРѕРјРїСЊСЋС‚РµСЂР°. РР»Рё РїСЂРѕСЃС‚Рѕ РїРµСЂРµС‚Р°С‰РёС‚Рµ РІРёРґРµРѕС„Р°Р№Р» СЃСЋРґР°:</div>
 	<div id="input-tag">
 		<input type="file" accept="video/*"  onchange="readVideo(this)"/>
 	</div>
@@ -126,7 +126,7 @@ div#input-tag::before { content: ""; position: absolute;  width: 0;
 
 
 <script type="text/javascript">
-/*  Комментарии - для совместимости с XHTML   */
+/*  РљРѕРјРјРµРЅС‚Р°СЂРёРё - РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЃ XHTML   */
 /* <!-- [CDATA [*/
 var width, height;
 
@@ -135,7 +135,7 @@ var width, height;
 	var vid = document.getElementsByTagName('video')[0];
     var c1 = document.getElementById('c1');
 
-	width_height_canvas(); // задаем начальные width и height для canvas
+	width_height_canvas(); // Р·Р°РґР°РµРј РЅР°С‡Р°Р»СЊРЅС‹Рµ width Рё height РґР»СЏ canvas
 
 
 function width_height_canvas() {
@@ -188,7 +188,7 @@ function readVideo(input) {
             vid.src = urlBlob;
             vid.poster = urlBlob;
             vid.getElementsByTagName('source')[0].src = urlBlob;
-//            URL.revokeObjectURL(obj_url); // Освобождает память от Blob
+//            URL.revokeObjectURL(obj_url); // РћСЃРІРѕР±РѕР¶РґР°РµС‚ РїР°РјСЏС‚СЊ РѕС‚ Blob
         };
 
         reader.onerror = function() {
@@ -196,7 +196,7 @@ function readVideo(input) {
         }
 
     }else {
-        alert('Error: не получилось загрузить видеофайл');
+        alert('Error: РЅРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕС„Р°Р№Р»');
 	}
 }
 
@@ -222,18 +222,18 @@ function  f(direction) {
 
 function RefreshPrmt(val) {
 
-	val = !!(this.value) ? this.value : val; // В зависимости от того, передан ли явно аргумент при запуске этой функции
+	val = !!(this.value) ? this.value : val; // Р’ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РѕРіРѕ, РїРµСЂРµРґР°РЅ Р»Рё СЏРІРЅРѕ Р°СЂРіСѓРјРµРЅС‚ РїСЂРё Р·Р°РїСѓСЃРєРµ СЌС‚РѕР№ С„СѓРЅРєС†РёРё
 
   	$("metka").textContent = (parseFloat(val) / 100).toFixed(2);
-  	DO_titles('back', 'Назад на ', (parseFloat(val) / 100).toFixed(2));
-    DO_titles('forward', 'Вперед на ', (parseFloat(val) / 100).toFixed(2));
+  	DO_titles('back', 'РќР°Р·Р°Рґ РЅР° ', (parseFloat(val) / 100).toFixed(2));
+    DO_titles('forward', 'Р’РїРµСЂРµРґ РЅР° ', (parseFloat(val) / 100).toFixed(2));
   }
 function DO_titles(idd, title1, val) {
-    document.getElementById(idd).title = title1 + val + ' секунд(ы)';
+    document.getElementById(idd).title = title1 + val + ' СЃРµРєСѓРЅРґ(С‹)';
 }
 
 function RefreshSpeed(val) {
-    val = !!(this.value) ? this.value : val; // В зависимости от того, передан ли явно аргумент при запуске этой функции
+    val = !!(this.value) ? this.value : val; // Р’ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РѕРіРѕ, РїРµСЂРµРґР°РЅ Р»Рё СЏРІРЅРѕ Р°СЂРіСѓРјРµРЅС‚ РїСЂРё Р·Р°РїСѓСЃРєРµ СЌС‚РѕР№ С„СѓРЅРєС†РёРё
 
     if(vid.paused){
         vid.defaultPlaybackRate = (parseFloat(val) / 100).toFixed(1);
@@ -244,38 +244,38 @@ function RefreshSpeed(val) {
     $("metka_speed").textContent = (parseFloat(val) / 100).toFixed(1);
 }
 
-function DO_normal_speed() { // Устанавливаем скорость воспроизведения видео, равную 1.0 (стандартную)
+function DO_normal_speed() { // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРєРѕСЂРѕСЃС‚СЊ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёСЏ РІРёРґРµРѕ, СЂР°РІРЅСѓСЋ 1.0 (СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ)
     $("speed").value = 100;
     new RefreshSpeed(100);
 }
 
-function load_video() { // Загружает видео в видео-тег и проверяет загрузку через 2 сек.
+function load_video() { // Р—Р°РіСЂСѓР¶Р°РµС‚ РІРёРґРµРѕ РІ РІРёРґРµРѕ-С‚РµРі Рё РїСЂРѕРІРµСЂСЏРµС‚ Р·Р°РіСЂСѓР·РєСѓ С‡РµСЂРµР· 2 СЃРµРє.
 
 	vid.poster = $('URL_video').value;
 	vid.getElementsByTagName('source')[0].src = $('URL_video').value;
 	vid.src = $('URL_video').value;
 
-    $('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки при загрузке видео
+    $('marker_video').style.display = 'none'; // РЈР±РёСЂР°РµРј РјР°СЂРєРµСЂ-Р·Р°СЃС‚Р°РІРєСѓ РѕС€РёР±РєРё РїСЂРё Р·Р°РіСЂСѓР·РєРµ РІРёРґРµРѕ
 	vid.load();
 
     var time_load = $('time_load').value;
 
 	setTimeout(function () {
-	    var mess = "Прошло <span></span> сек., но видео пока не успело загрузиться. Увеличьте время ожидания загрузки и попробуйте загрузить видео снова.";
+	    var mess = "РџСЂРѕС€Р»Рѕ <span></span> СЃРµРє., РЅРѕ РІРёРґРµРѕ РїРѕРєР° РЅРµ СѓСЃРїРµР»Рѕ Р·Р°РіСЂСѓР·РёС‚СЊСЃСЏ. РЈРІРµР»РёС‡СЊС‚Рµ РІСЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ Р·Р°РіСЂСѓР·РєРё Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕ СЃРЅРѕРІР°.";
 
         if(vid.networkState === 3){
-			alert('Видео по указанной ссылке не найдено или недоступна сеть.');
-			mess = 'Прошло <span></span> сек., но видео пока не найдено, так как его, похоже, нет по указанному URL. <br/> Проверьте правильность загружаемой ссылки. Или - увеличьте время ожидания загрузки и попробуйте загрузить видео снова.';
+			alert('Р’РёРґРµРѕ РїРѕ СѓРєР°Р·Р°РЅРЅРѕР№ СЃСЃС‹Р»РєРµ РЅРµ РЅР°Р№РґРµРЅРѕ РёР»Рё РЅРµРґРѕСЃС‚СѓРїРЅР° СЃРµС‚СЊ.');
+			mess = 'РџСЂРѕС€Р»Рѕ <span></span> СЃРµРє., РЅРѕ РІРёРґРµРѕ РїРѕРєР° РЅРµ РЅР°Р№РґРµРЅРѕ, С‚Р°Рє РєР°Рє РµРіРѕ, РїРѕС…РѕР¶Рµ, РЅРµС‚ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ URL. <br/> РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ Р·Р°РіСЂСѓР¶Р°РµРјРѕР№ СЃСЃС‹Р»РєРё. РР»Рё - СѓРІРµР»РёС‡СЊС‚Рµ РІСЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ Р·Р°РіСЂСѓР·РєРё Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕ СЃРЅРѕРІР°.';
 		}
 
-	    if(vid.readyState >= 2){ // Если видео хотя бы начало загружаться
-			$('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки при загрузке видео
+	    if(vid.readyState >= 2){ // Р•СЃР»Рё РІРёРґРµРѕ С…РѕС‚СЏ Р±С‹ РЅР°С‡Р°Р»Рѕ Р·Р°РіСЂСѓР¶Р°С‚СЊСЃСЏ
+			$('marker_video').style.display = 'none'; // РЈР±РёСЂР°РµРј РјР°СЂРєРµСЂ-Р·Р°СЃС‚Р°РІРєСѓ РѕС€РёР±РєРё РїСЂРё Р·Р°РіСЂСѓР·РєРµ РІРёРґРµРѕ
 
-            width_height_canvas(); // задаем width и height для canvas
+            width_height_canvas(); // Р·Р°РґР°РµРј width Рё height РґР»СЏ canvas
 
             c1.getContext("2d").drawImage(vid, 0, 0, width , height);
 
-		}else { // Если через заданное время видео так и не начало загружаться
+		}else { // Р•СЃР»Рё С‡РµСЂРµР· Р·Р°РґР°РЅРЅРѕРµ РІСЂРµРјСЏ РІРёРґРµРѕ С‚Р°Рє Рё РЅРµ РЅР°С‡Р°Р»Рѕ Р·Р°РіСЂСѓР¶Р°С‚СЊСЃСЏ
             $('marker_video').innerHTML = mess;
             $('marker_video').getElementsByTagName('span')[0].textContent = time_load;
             $('marker_video').style.display = 'block';
@@ -291,23 +291,23 @@ function mediaError(e) {
 	   switch (target.error.code) {
 
 		 case target.error.MEDIA_ERR_ABORTED:
-		   alert('Воспроизведение видео прервано пользователем.');
+		   alert('Р’РѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ РІРёРґРµРѕ РїСЂРµСЂРІР°РЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.');
 		   break;
 
 		 case target.error.MEDIA_ERR_NETWORK:
-		   alert('Ошибка сети, загрузка медиафайла остановлена.');
+		   alert('РћС€РёР±РєР° СЃРµС‚Рё, Р·Р°РіСЂСѓР·РєР° РјРµРґРёР°С„Р°Р№Р»Р° РѕСЃС‚Р°РЅРѕРІР»РµРЅР°.');
 		   break;
 
 		 case target.error.MEDIA_ERR_DECODE:
-		   alert('Воспроизведение медиафайла прервано по причине наличия в нем элементов, которые не могут быть декодированы браузером.');
+		   alert('Р’РѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ РјРµРґРёР°С„Р°Р№Р»Р° РїСЂРµСЂРІР°РЅРѕ РїРѕ РїСЂРёС‡РёРЅРµ РЅР°Р»РёС‡РёСЏ РІ РЅРµРј СЌР»РµРјРµРЅС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РґРµРєРѕРґРёСЂРѕРІР°РЅС‹ Р±СЂР°СѓР·РµСЂРѕРј.');
 		   break;
 
 		 case target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-		   alert('Медиа файл не может быть загружен по причине ошибки сервера или сети, или данный формат медиа не поддерживается.');
+		   alert('РњРµРґРёР° С„Р°Р№Р» РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р·Р°РіСЂСѓР¶РµРЅ РїРѕ РїСЂРёС‡РёРЅРµ РѕС€РёР±РєРё СЃРµСЂРІРµСЂР° РёР»Рё СЃРµС‚Рё, РёР»Рё РґР°РЅРЅС‹Р№ С„РѕСЂРјР°С‚ РјРµРґРёР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
 		   break;
 
 		 default:
-		   alert('Не известная ошибка при работе с видео.');
+		   alert('РќРµ РёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЃ РІРёРґРµРѕ.');
 		   break;
 	   }
     }
@@ -319,7 +319,7 @@ $("range").onmousemove = RefreshPrmt;
 
 $("speed").onmousemove = RefreshSpeed;
 
-// При открытии/обновлении страницы задаем параметры
+// РџСЂРё РѕС‚РєСЂС‹С‚РёРё/РѕР±РЅРѕРІР»РµРЅРёРё СЃС‚СЂР°РЅРёС†С‹ Р·Р°РґР°РµРј РїР°СЂР°РјРµС‚СЂС‹
 $('metka').textContent = $('range').value / 100;
 
 new RefreshPrmt($("range").value);
@@ -332,7 +332,7 @@ function show_kadr(e) {
     if(e.key === 'Right' || e.key === 'ArrowRight'){
         e.preventDefault();
         f(1*flag);
-//        flag = 0; // Для того, чтобы обработчик keydown работал вхолостую до тех пор, пока видео не будет готово к очередной прокрутке (после появления события canplay)
+//        flag = 0; // Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РѕР±СЂР°Р±РѕС‚С‡РёРє keydown СЂР°Р±РѕС‚Р°Р» РІС…РѕР»РѕСЃС‚СѓСЋ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РІРёРґРµРѕ РЅРµ Р±СѓРґРµС‚ РіРѕС‚РѕРІРѕ Рє РѕС‡РµСЂРµРґРЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРµ (РїРѕСЃР»Рµ РїРѕСЏРІР»РµРЅРёСЏ СЃРѕР±С‹С‚РёСЏ canplay)
     }
     if(e.key === 'Left' || e.key === 'ArrowLeft'){
         e.preventDefault();
@@ -342,38 +342,38 @@ function show_kadr(e) {
 }
 
 
-vid.addEventListener('loadeddata', function(e) { // Срабатывает только 1 раз (при загрузке видео)
+vid.addEventListener('loadeddata', function(e) { // РЎСЂР°Р±Р°С‚С‹РІР°РµС‚ С‚РѕР»СЊРєРѕ 1 СЂР°Р· (РїСЂРё Р·Р°РіСЂСѓР·РєРµ РІРёРґРµРѕ)
 	if(vid.readyState >= 2){
-        console.log('Начата загрузка видео...');
-        width_height_canvas(); // задаем width и height для canvas
+        console.log('РќР°С‡Р°С‚Р° Р·Р°РіСЂСѓР·РєР° РІРёРґРµРѕ...');
+        width_height_canvas(); // Р·Р°РґР°РµРј width Рё height РґР»СЏ canvas
     }else {
-        console.log('Невозможно загрузить видео по ссылке '+ $('URL_video').value);
-        alert('Ошибка при загрузке видео');
+        console.log('РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РІРёРґРµРѕ РїРѕ СЃСЃС‹Р»РєРµ '+ $('URL_video').value);
+        alert('РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РІРёРґРµРѕ');
     }
 });
 
 
-vid.addEventListener("canplay", function() { // Срабатывает каждый раз после очередной ручной прокрутки видео
-// Разрешаем прокручивать видео к следующему моменту времени только после того, как очередной кадр может показываться (и, соответственно, отображаться в canvas)
-//	console.log(1); // Просто хотя бы так, при этом почему-то меньше мигает и исчезает видео при его ручной прокрутке
-// Если этот обработчик делает хоть что-нибудь (даже бесполезную операцию), то видео при ручной прокрутке, как правило, не исчезает, не мигает.
-        $('marker_video').style.display = 'none'; // Убираем маркер-заставку ошибки, т.к. видео загрузилось
+vid.addEventListener("canplay", function() { // РЎСЂР°Р±Р°С‚С‹РІР°РµС‚ РєР°Р¶РґС‹Р№ СЂР°Р· РїРѕСЃР»Рµ РѕС‡РµСЂРµРґРЅРѕР№ СЂСѓС‡РЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРё РІРёРґРµРѕ
+// Р Р°Р·СЂРµС€Р°РµРј РїСЂРѕРєСЂСѓС‡РёРІР°С‚СЊ РІРёРґРµРѕ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РјРѕРјРµРЅС‚Сѓ РІСЂРµРјРµРЅРё С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє РѕС‡РµСЂРµРґРЅРѕР№ РєР°РґСЂ РјРѕР¶РµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊСЃСЏ (Рё, СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ, РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РІ canvas)
+//	console.log(1); // РџСЂРѕСЃС‚Рѕ С…РѕС‚СЏ Р±С‹ С‚Р°Рє, РїСЂРё СЌС‚РѕРј РїРѕС‡РµРјСѓ-С‚Рѕ РјРµРЅСЊС€Рµ РјРёРіР°РµС‚ Рё РёСЃС‡РµР·Р°РµС‚ РІРёРґРµРѕ РїСЂРё РµРіРѕ СЂСѓС‡РЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРµ
+// Р•СЃР»Рё СЌС‚РѕС‚ РѕР±СЂР°Р±РѕС‚С‡РёРє РґРµР»Р°РµС‚ С…РѕС‚СЊ С‡С‚Рѕ-РЅРёР±СѓРґСЊ (РґР°Р¶Рµ Р±РµСЃРїРѕР»РµР·РЅСѓСЋ РѕРїРµСЂР°С†РёСЋ), С‚Рѕ РІРёРґРµРѕ РїСЂРё СЂСѓС‡РЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРµ, РєР°Рє РїСЂР°РІРёР»Рѕ, РЅРµ РёСЃС‡РµР·Р°РµС‚, РЅРµ РјРёРіР°РµС‚.
+        $('marker_video').style.display = 'none'; // РЈР±РёСЂР°РµРј РјР°СЂРєРµСЂ-Р·Р°СЃС‚Р°РІРєСѓ РѕС€РёР±РєРё, С‚.Рє. РІРёРґРµРѕ Р·Р°РіСЂСѓР·РёР»РѕСЃСЊ
 
-	flag = 1; /* Для синхронизации прокрутки видео в теге video и в canvas (иначе изображение в canvas может не успеть появиться */
+	flag = 1; /* Р”Р»СЏ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё РїСЂРѕРєСЂСѓС‚РєРё РІРёРґРµРѕ РІ С‚РµРіРµ video Рё РІ canvas (РёРЅР°С‡Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РІ canvas РјРѕР¶РµС‚ РЅРµ СѓСЃРїРµС‚СЊ РїРѕСЏРІРёС‚СЊСЃСЏ */
         $('time_video').getElementsByTagName('span')[0].textContent = vid.currentTime.toFixed(2);
         $('time_video').getElementsByTagName('span')[2].textContent = vid.duration.toFixed(2);
 },
 	false);
 
 
-vid.addEventListener("seeked", function() { // Срабатывает после canplay
+vid.addEventListener("seeked", function() { // РЎСЂР°Р±Р°С‚С‹РІР°РµС‚ РїРѕСЃР»Рµ canplay
     c1.getContext("2d").drawImage(vid, 0, 0, width , height);
     },
 	false);
 
 
 
-// Запрещаем перетаскивание файлов на страницу, за исключением специальной области для загрузки файлов
+// Р—Р°РїСЂРµС‰Р°РµРј РїРµСЂРµС‚Р°СЃРєРёРІР°РЅРёРµ С„Р°Р№Р»РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Сѓ, Р·Р° РёСЃРєР»СЋС‡РµРЅРёРµРј СЃРїРµС†РёР°Р»СЊРЅРѕР№ РѕР±Р»Р°СЃС‚Рё РґР»СЏ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ
 window.addEventListener("dragover", prevent_drag_drop, false);
 window.addEventListener("drop", prevent_drag_drop, false);
 
